@@ -1,0 +1,47 @@
+import java.util.Scanner;
+public class SubjectDemo {
+    public static void main(String args[]) {
+        Scanner ip = new Scanner(System.in);
+        Subject subject[] = new Subject[5];  //ไม่ไช้คลาสของตัวมันเองเพราะว่าหาไม่เจอVVVV
+        subject[0] = new Subject("976-240", "OOP", 3); //Subjectมาจากconstuctor
+        subject[1] = new Subject("976-374", "CBSD", 3);
+        subject[2] = new Subject("140-111", "SEMINAR", 1);
+        System.out.println("Array length=" + subject.length);
+        for (Subject sub : subject) {
+            if (sub == null) {
+                continue;
+            }
+            sub.printSubject();
+        }
+        String C = ip.next();
+        int check = 0; //ให้เช็คว่าหาเจอไม่เจอ ใช้ booleanก็ได้
+        for (int i = 0; i < 5; i++) {
+            if (subject[i] == null) {  //กำหนดให้ข้ามไปไม่งั้นerrorแดรก
+                continue;
+            } else if (C.equalsIgnoreCase(subject[i].id)) {
+                System.out.println("Name:" + subject[i].title);
+                System.out.println("Credit:" + subject[i].credit);
+                check = 1;  
+            }
+        }
+        if (check == 0) {  //ไว้นอกลูปเพราะถ้าไว้ในloopมันจะขึ้น not found แล้วก็ error เพราะเกินขอบเขตของarray
+            System.out.println("Not Found");
+        }
+    }
+}
+/*
+result
+Array length=5
+Subject id: 976-240
+Subject name: OOP
+Credit: 3
+Subject id: 976-374
+Subject name: CBSD
+Credit: 3
+Subject id: 140-111
+Subject name: SEMINAR
+Credit: 1
+140-111
+Name:SEMINAR
+Credit:1
+*/
