@@ -1,0 +1,14 @@
+public class Subject {
+    String id, title;
+    int credit;
+    Subject(String id, String title, int credit) {  //constuctorกำหนดตัวแปร
+        this.id = id;
+        this.title = title;
+        this.credit = credit;
+    }
+    public void printSubject() {
+        System.out.println("Subject id: " + id);
+        System.out.println("Subject name: " + title);
+        System.out.println("Credit: " + credit);
+    }
+}
