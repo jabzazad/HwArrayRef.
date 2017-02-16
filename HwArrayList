@@ -1,0 +1,133 @@
+//5930213031 Padchara Teeduang
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class ArrayListDemo {
+
+    String id;
+    String title;
+    int credit;
+
+    ArrayListDemo(String a, String b, int c) {
+        id = a;
+        title = b;
+        credit = c;
+    }
+
+    public static void main(String[] artr) {
+        ArrayList<ArrayListDemo> slist = new ArrayList<ArrayListDemo>();
+        slist.add(new ArrayListDemo("977-240", "OOP", 3));
+        slist.add(new ArrayListDemo("976-374", "CBSD", 3));
+        slist.add(new ArrayListDemo("140-111", "SEMINAR", 1));
+        System.out.println("Size of slist =" + slist.size());
+        System.out.println("------------------------------------------------");
+        System.out.println("id\ttitle\tcredit");
+        System.out.println("------------------------------------------------");
+        for (int i = 0; i < slist.size(); i++) {
+            System.out.print(slist.get(i).id);
+            System.out.print("\t" + slist.get(i).title);
+            System.out.println("\t" + slist.get(i).credit);
+        }
+        System.out.println("------------------------------------------------");
+        slist.add(new ArrayListDemo("977-241", "OOAD", 3));
+        slist.add(2, new ArrayListDemo("976-493", "Project", 3));
+        slist.remove(3);
+        System.out.println("");
+        System.out.println(">>> Add 2 subjects and remove 1 subject");
+        System.out.println("Size of slist = " + slist.size());
+        System.out.println("------------------------------------------------");
+        System.out.println("id\ttitle\tcredit");
+        System.out.println("------------------------------------------------");
+        for (int i = 0; i < slist.size(); i++) {
+            System.out.print(slist.get(i).id);
+            System.out.print("\t" + slist.get(i).title);
+            System.out.println("\t" + slist.get(i).credit);
+            System.out.println("------------------------------------------------");
+        }
+        Scanner ip = new Scanner(System.in);
+        System.out.println("");
+        System.out.println("**INSERT NEW SUBJECTS **");
+        System.out.print("Enter Subjects id :");
+        String newid = ip.next();
+        System.out.print("Enter Subjects title :");
+        String newtitle = ip.next();
+        System.out.print("Enter Subject credit :");
+        int newcredit = ip.nextInt();
+        slist.add(new ArrayListDemo(newid, newtitle, newcredit));
+        System.out.println("------------------------------------------------");
+        System.out.println("id\ttitle\tcredit");
+        System.out.println("------------------------------------------------");
+        for (int i = 0; i < slist.size(); i++) {
+            System.out.print(slist.get(i).id);
+            System.out.print("\t" + slist.get(i).title);
+            System.out.println("\t" + slist.get(i).credit);
+        }
+        System.out.println("------------------------------------------------");
+        System.out.println("Total subjects = " + slist.size());
+        System.out.println("");
+        System.out.println("** Search subject **");
+        System.out.print("Enter id: ");
+        String found = ip.next();
+        int check = 0;
+        for (int i = 0; i < slist.size(); i++) {
+            if (found.equals(slist.get(i).id)) {
+                System.out.println("------------------------------------------------");
+                System.out.println("id\ttitle\tcredit");
+                System.out.println("------------------------------------------------");
+                System.out.print(slist.get(i).id);
+                System.out.print("\t" + slist.get(i).title);
+                System.out.println("\t" + slist.get(i).credit);
+                System.out.println("------------------------------------------------");
+                check = 1;
+            }
+        }
+        if (check == 0) {
+            System.out.println("subject is not found");
+        }
+    }
+
+}
+/*
+ result
+ Size of slist =3
+ ------------------------------------------------
+ id	title	credit
+ ------------------------------------------------
+ 977-240	OOP	3
+ 976-374	CBSD	3
+ 140-111	SEMINAR	1
+ ------------------------------------------------
+
+ >>> Add 2 subjects and remove 1 subject
+ Size of slist = 4
+ ------------------------------------------------
+ id	title	credit
+ ------------------------------------------------
+ 977-240	OOP	3
+ ------------------------------------------------
+ 976-374	CBSD	3
+ ------------------------------------------------
+ 976-493	Project	3
+ ------------------------------------------------
+ 977-241	OOAD	3
+ ------------------------------------------------
+
+ **INSERT NEW SUBJECTS **
+ Enter Subjects id :140-146
+ Enter Subjects title :gdad
+ Enter Subject credit :3
+ ------------------------------------------------
+ id	title	credit
+ ------------------------------------------------
+ 977-240	OOP	3
+ 976-374	CBSD	3
+ 976-493	Project	3
+ 977-241	OOAD	3
+ 140-146	gdad	3
+ ------------------------------------------------
+ Total subjects = 5
+
+ ** Search subject **
+ Enter id: 999-999
+ subject is not found
+ */
